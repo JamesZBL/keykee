@@ -1,6 +1,12 @@
+from core.handler import Handler
+from core.listener import KeyListener
+
+
 class App:
 	def run(self):
-		print('ok')
+		handler = Handler()
+		listener = KeyListener(handler)
+		listener.listen()
 
 
 if __name__ == '__main__':
