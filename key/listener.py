@@ -1,6 +1,6 @@
 from pynput.keyboard import Listener
 
-from core.handler import Handler
+from key.handler import Handler
 
 
 class KeyListener:

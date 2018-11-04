@@ -1,5 +1,5 @@
-from core.handler import Handler
-from core.listener import KeyListener
+from key.handler import Handler
+from key.listener import KeyListener
 
 
 class App:
