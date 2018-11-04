@@ -1,12 +1,10 @@
 from datetime import datetime
 
-from core.keys import KeyTranslator
-
 
 class Event:
-	def __init__(self, key):
-		self.translator = KeyTranslator()
-		self.key = key
+	def __init__(self, key, translator):
+		self.translator = translator
+		self.key = str(key)
 		self.time = datetime.now()
 
 	def __str__(self) -> str:
