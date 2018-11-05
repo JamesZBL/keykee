@@ -15,35 +15,26 @@ class DataRepo(DBRepo):
 	_columns = ['ID', 'TIMES', 'DATE']
 
 	def __init__(self) -> None:
-		super().__init__(self._columns)
-		self._connect()
+		connection = self._connect()
+		super().__init__(self._columns, connection)
 		self._init()
-		self.connection = None
 
 	def _connect(self):
-		self.connection = sqlite3.connect(self._db_name)
+		return sqlite3.connect(self._db_name)
 
 	def _init(self):
-		c = self._get_cursor()
-		c.execute(self._sql_create)
-		self._commit()
+		self.__create__(self._sql_create)
 		last_date = self._get_last_date()
+		print(last_date)
 		if last_date is None:
 			self._insert_today()
 
 	def _insert_today(self):
 		sql = self._sql_insert_today % date.today()
-		c = self._get_cursor()
-		c.execute(sql)
-		self._commit()
+		self.__insert__(sql)
 
 	def _get_last_date(self):
-		c = self._get_cursor()
-		c.execute(self._sql_select_last_date)
+		rows = self.__select__(self._sql_select_last_date)
+		if rows:
+			return rows[0][0]
 		return None
-
-	def _get_cursor(self):
-		return self.connection.cursor()
-
-	def _commit(self):
-		self.connection.commit()
