@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class DBRepo:
 
 	def __init__(self, columns, connection) -> None:
@@ -6,6 +9,9 @@ class DBRepo:
 
 	def __ri__(self, column_name):
 		return self._columns.index(column_name)
+
+	def __to_date__(self, raw_date):
+		return datetime.strptime(raw_date, '%Y-%m-%d')
 
 	def __select__(self, sql):
 		cn = self.connection

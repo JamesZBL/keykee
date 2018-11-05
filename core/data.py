@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import date
+from datetime import date, datetime
 
 from core.repo import DBRepo
 
@@ -27,6 +27,8 @@ class DataRepo(DBRepo):
 		last_date = self._get_last_date()
 		print(last_date)
 		if last_date is None:
+			self._insert_today()
+		elif self.__to_date__(last_date).date() < datetime.today().date():
 			self._insert_today()
 
 	def _insert_today(self):
