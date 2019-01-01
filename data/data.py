@@ -10,21 +10,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import sqlite3
-from datetime import date, datetime
+from datetime import datetime
 
-from core.repo import DBRepo
+from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-
 	_db_name = "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
-					`KEYKEE`(`ID` INT PRIMARY KEY, `TIMES` INT, `DATE` DATE)'''
-	_sql_select_all = '''SELECT * FROM `KEYKEE`'''
-	_sql_select_last_date = '''SELECT `DATE` FROM `KEYKEE` ORDER BY `ID` DESC'''
-	_sql_insert_today = '''INSERT INTO `KEYKEE` VALUES (NULL, 0, '%s')'''
+					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''
+	_sql_select_all = '''SELECT * FROM `KEYKEE`;'''
+	_sql_select_last_date = '''SELECT `DATE` FROM `KEYKEE` ORDER BY `ID` DESC;'''
+	_sql_insert_key = '''INSERT INTO `KEYKEE` VALUES (NULL, '%s', 1, '%s');'''
 
-	_columns = ['ID', 'TIMES', 'DATE']
+	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 
 	def __init__(self) -> None:
 		connection = self._connect()
@@ -32,23 +31,13 @@ class DataRepo(DBRepo):
 		self._init()
 
 	def _connect(self):
-		return sqlite3.connect(self._db_name)
+		return sqlite3.connect(self._db_name, check_same_thread=False)
 
 	def _init(self):
 		self.__create__(self._sql_create)
-		last_date = self._get_last_date()
-		print(last_date)
-		if last_date is None:
-			self._insert_today()
-		elif self.__to_date__(last_date).date() < datetime.today().date():
-			self._insert_today()
 
-	def _insert_today(self):
-		sql = self._sql_insert_today % date.today()
+	def _insert_key(self, keys):
+		sql = ''
+		for k in keys:
+			sql = sql + self._sql_insert_key % (k, datetime.now())
 		self.__insert__(sql)
-
-	def _get_last_date(self):
-		rows = self.__select__(self._sql_select_last_date)
-		if rows:
-			return rows[0][0]
-		return None
