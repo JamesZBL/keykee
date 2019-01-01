@@ -6,7 +6,7 @@ from key.keys import KeyTranslator
 class Handler:
 
 	def __init__(self) -> None:
-		self.translator = KeyTranslator
+		self.translator = KeyTranslator()
 		self.repo = DataRepo()
 
 	def handle_input(self, key):
