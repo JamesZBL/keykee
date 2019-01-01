@@ -3,3 +3,4 @@
 *.spec
 dist
 build
+buildapp
