@@ -1,2 +1,5 @@
 .idea
 *.db
+*.spec
+dist
+build
