@@ -5,6 +5,7 @@ from core.repo import DBRepo
 
 
 class DataRepo(DBRepo):
+
 	_db_name = "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INT PRIMARY KEY, `TIMES` INT, `DATE` DATE)'''

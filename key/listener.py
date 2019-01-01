@@ -4,6 +4,7 @@ from key.handler import Handler
 
 
 class KeyListener:
+
 	def __init__(self, handler: Handler):
 		self.handler = handler
 
