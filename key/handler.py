@@ -1,6 +1,6 @@
 from core.data import DataRepo
 from key.event import Event
-from key.keys import KeyTranslator
+from key.translator import KeyTranslator
 
 
 class Handler:

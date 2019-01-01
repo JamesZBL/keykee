@@ -16,5 +16,5 @@ class KeyTranslator:
 	def beautify_right(self, key):
 		if key.endswith('_r'):
 			key = key.replace('_r', '')
-			return "right %s" % key
+			return "%s-right" % key
 		return key
