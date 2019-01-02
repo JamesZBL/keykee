@@ -48,7 +48,7 @@ class DBRepo:
 	def __insert__(self, sql):
 		cn = self.connection
 		c = cn.cursor()
-		c.execute(sql)
+		c.executescript(sql)
 		cn.commit()
 
 	def __deletee__(self, sql):
