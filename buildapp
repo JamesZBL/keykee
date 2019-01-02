@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 rm -rf dist
 rm -rf build
 pyinstaller -F App.py
+cp ./install dist/
+cp ./keykee dist/

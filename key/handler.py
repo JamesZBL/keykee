@@ -22,7 +22,5 @@ class Handler:
 
 	def handle_input(self, key):
 		event = Event(key, self.translator)
-		formatted = str(event)
-		print(formatted)
 		translated = self.translator.translate(event.key)
 		self.repo.insert_key(translated)
