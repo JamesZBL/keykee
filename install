@@ -1,3 +1,5 @@
 #!/bin/sh
-ln -s `pwd`/keykee /etc/profile.d/keykee
+rm /etc/profile.d/keykee
+work_path=$(dirname $(readlink -f $0))
+ln -s $work_path/keykee /etc/profile.d/keykee
 /etc/profile.d/keykee &
