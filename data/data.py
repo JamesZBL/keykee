@@ -10,13 +10,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import sqlite3
+import os
+from os import path
 from datetime import datetime
+from pathlib import Path
 
 from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-	_db_name = "keykee.db"
+	_home_dir = str(Path.home()) + "/.keykee/"
+	_db_name = _home_dir + "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''
 	_sql_select_all = '''SELECT * FROM `KEYKEE`;'''
@@ -26,6 +30,7 @@ class DataRepo(DBRepo):
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 
 	def __init__(self) -> None:
+		self._init_home()
 		connection = self._connect()
 		super().__init__(self._columns, connection)
 		self._init()
@@ -41,3 +46,9 @@ class DataRepo(DBRepo):
 		for k in keys:
 			sql = sql + self._sql_insert_key % (k, datetime.now())
 		self.__insert__(sql)
+
+	def _init_home(self):
+		if path.exists(self._home_dir):
+			pass
+		else:
+			os.mkdir(self._home_dir)
