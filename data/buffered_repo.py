@@ -14,16 +14,15 @@ from data.data import DataRepo
 
 class BufferedRepo(DataRepo):
 	_initial_flush_threshold = 20
+	key_buffer = []
 
 	def __init__(self) -> None:
 		super().__init__()
-		self.key_buffer = []
 
 	def insert_key(self, key):
 		self.put_key(key)
 		if len(self.key_buffer) == self._initial_flush_threshold:
-			for k in self.key_buffer:
-				super()._insert_key(k)
+			super()._insert_key(self.key_buffer)
 			self.key_buffer.clear()
 
 	def put_key(self, key):
