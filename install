@@ -9,17 +9,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
-from key.listener import KeyListener
 
-
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
-
-
-if __name__ == '__main__':
-	app = App()
-	app.run()
+#!/bin/sh
+boot_script=/etc/profile.d/keykee.sh
+if [ -f "$boot_script" ];
+then
+    rm $boot_script
+fi
+work_path=$(dirname $(readlink -f $0))
+ln -s $work_path/keykee.sh $boot_script
+$boot_script &

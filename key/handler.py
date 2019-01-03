@@ -9,17 +9,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
-from key.listener import KeyListener
+from data.buffered_repo import BufferedRepo
+from key.event import Event
+from key.translator import KeyTranslator
 
 
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
+class Handler:
 
+	def __init__(self) -> None:
+		self.translator = KeyTranslator()
+		self.repo = BufferedRepo()
 
-if __name__ == '__main__':
-	app = App()
-	app.run()
+	def handle_input(self, key):
+		event = Event(key, self.translator)
+		translated = self.translator.translate(event.key)
+		self.repo.insert_key(translated)
