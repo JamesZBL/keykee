@@ -20,6 +20,11 @@ $ pip install pipreqs
 $ pip install -r requirements.txt
 ```
 
+4.编译安装
+```sh
+$ sudo ./install
+```
+
 ## 贡献
 
 如果你有更好的想法，欢迎贡献代码
