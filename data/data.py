@@ -19,7 +19,7 @@ from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-	_home_dir = str(Path.home()) + "/.keykee.sh/"
+	_home_dir = str(Path.home()) + "/.keykee/"
 	_db_name = _home_dir + "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''
