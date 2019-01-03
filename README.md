@@ -20,6 +20,11 @@ $ pip install pipreqs
 $ pip install -r requirements.txt
 ```
 
+## 贡献
+
+如果你有更好的想法，欢迎贡献代码
+
+
 
 
 更多技术文章请关注摆码王子的小屋: https://b.letec.top
