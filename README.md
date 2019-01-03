@@ -7,6 +7,7 @@
 
 ```sh
 $ git clone https://gitee.com/zbl1996/keyee.git
+$ cd keykee
 ```
 
 2.安装 pipreqs
@@ -19,6 +20,16 @@ $ pip install pipreqs
 ```sh
 $ pip install -r requirements.txt
 ```
+
+4.编译安装
+```sh
+$ sudo ./install
+```
+
+## 贡献
+
+如果你有更好的想法，欢迎贡献代码
+
 
 
 
