@@ -18,4 +18,5 @@ then
 fi
 work_path=$(dirname $(readlink -f $0))
 ln -s $work_path/keykee.sh $boot_script
+ln -s $work_path/App /usr/bin/keykee
 $boot_script &
