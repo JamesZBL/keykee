@@ -9,13 +9,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
+from key.handler import KeyEventHandler
 from key.listener import KeyListener
 
 
 class App:
 	def run(self):
-		handler = Handler()
+		handler = KeyEventHandler()
 		listener = KeyListener(handler)
 		listener.listen()
 

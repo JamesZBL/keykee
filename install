@@ -12,11 +12,7 @@
 
 #!/bin/sh
 boot_script=/etc/profile.d/keykee.sh
-if [ -f "$boot_script" ];
-then
-    rm $boot_script
-fi
 work_path=$(dirname $(readlink -f $0))
-ln -s $work_path/keykee.sh $boot_script
-ln -s $work_path/App /usr/bin/keykee
+ln -s -f $work_path/keykee.sh $boot_script
+ln -s -f $work_path/App /usr/bin/keykee
 $boot_script &

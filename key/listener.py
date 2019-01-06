@@ -11,12 +11,12 @@
 # limitations under the License.
 from pynput.keyboard import Listener
 
-from key.handler import Handler
+from key.handler import KeyEventHandler
 
 
 class KeyListener:
 
-	def __init__(self, handler: Handler):
+	def __init__(self, handler: KeyEventHandler):
 		self.handler = handler
 
 	def listen(self):
