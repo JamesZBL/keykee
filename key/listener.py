@@ -9,17 +9,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from pynput.keyboard import Listener
+
 from key.handler import Handler
-from key.listener import KeyListener
 
 
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
+class KeyListener:
 
+	def __init__(self, handler: Handler):
+		self.handler = handler
 
-if __name__ == '__main__':
-	app = App()
-	app.run()
+	def listen(self):
+		with Listener(on_press=self.handler.handle_input) as listener:
+			listener.join()

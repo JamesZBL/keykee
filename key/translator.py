@@ -9,17 +9,29 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
-from key.listener import KeyListener
 
 
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
+class KeyTranslator:
 
+	def __init__(self) -> None:
+		super().__init__()
 
-if __name__ == '__main__':
-	app = App()
-	app.run()
+	def translate(self, key):
+		key = self.remove_prefix(key)
+		key = self.beautify_right(key)
+		key = self.remove_quotation_mark(key)
+		return key
+
+	def remove_prefix(self, key):
+		if key.startswith('Key.'):
+			return key.replace('Key.', '')
+		return key
+
+	def beautify_right(self, key):
+		if key.endswith('_r'):
+			key = key.replace('_r', '')
+			return "%s-right" % key
+		return key
+
+	def remove_quotation_mark(self, key):
+		return key.replace('\'', '')

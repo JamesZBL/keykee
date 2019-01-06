@@ -9,17 +9,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
-from key.listener import KeyListener
+from datetime import datetime
 
 
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
+class Event:
 
+	def __init__(self, key, translator):
+		self.translator = translator
+		self.key = str(key)
+		self.time = datetime.now()
 
-if __name__ == '__main__':
-	app = App()
-	app.run()
+	def __str__(self) -> str:
+		name = self.translator.translate(key=self.key)
+		return "%s\t%s" % (name, self.time)
