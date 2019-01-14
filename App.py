@@ -14,10 +14,17 @@ from key.listener import KeyListener
 
 
 class App:
-	def run(self):
+	def run_client(self):
 		handler = KeyEventHandler()
 		listener = KeyListener(handler)
 		listener.listen()
+
+	def run_server(self):
+		pass
+
+	def run(self):
+		self.run_client()
+		self.run_server()
 
 
 if __name__ == '__main__':
