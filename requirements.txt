@@ -1,2 +1,2 @@
-flask
 pynput==1.4
+Flask==1.0.2

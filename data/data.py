@@ -9,10 +9,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import sqlite3
 import os
-from os import path
+import sqlite3
 from datetime import datetime
+from os import path
 from pathlib import Path
 
 from data.repo import DBRepo
@@ -26,6 +26,8 @@ class DataRepo(DBRepo):
 	_sql_select_all = '''SELECT * FROM `KEYKEE`;'''
 	_sql_select_last_date = '''SELECT `DATE` FROM `KEYKEE` ORDER BY `ID` DESC;'''
 	_sql_insert_key = '''INSERT INTO `KEYKEE` VALUES (NULL, '%s', 1, '%s');'''
+	_sql_select_keys = '''SELECT k.KEY_NAME AS key, count(*) AS count
+	                        FROM KEYKEE k GROUP BY k.KEY_NAME ORDER BY count DESC;'''
 
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 

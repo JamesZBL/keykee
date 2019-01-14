@@ -16,3 +16,8 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
+
+table.keys {
+    text-align: center;
+    margin: 0 auto;
+}

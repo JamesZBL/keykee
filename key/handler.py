@@ -11,7 +11,7 @@
 # limitations under the License.
 from datetime import datetime
 
-from data.buffered_repo import BufferedRepo
+from data.buffered_repo import buffered_repo
 from key.event import Event
 from key.translator import KeyTranslator
 
@@ -20,7 +20,7 @@ class KeyEventHandler:
 	last_event_time = datetime.now()
 	last_key = None
 	translator = KeyTranslator()
-	repo = BufferedRepo()
+	repo = buffered_repo
 	key_space = 100 * 1000
 
 	def handle_input(self, key):

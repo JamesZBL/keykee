@@ -11,10 +11,13 @@
 # limitations under the License.
 from flask import Flask, render_template
 
+from data.buffered_repo import buffered_repo as repo
+
 webapp = Flask(__name__, static_folder='static', static_url_path='/static')
 app = webapp
 
 
 @app.route("/")
-def hello():
-	return render_template('index.html')
+def index():
+	keys = repo.find_keys()
+	return render_template('index.html', keys=keys)

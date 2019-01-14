@@ -20,5 +20,17 @@ limitations under the License.
 </head>
 <body>
 <h1>Welcome to Keykee</h1>
+<table class="keys">
+    <tr>
+        <th>key</th>
+        <th>count</th>
+    </tr>
+    {% for key in keys %}
+    <tr>
+        <td>{{ key[0] }}</td>
+        <td>{{ key[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

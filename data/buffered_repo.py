@@ -27,3 +27,9 @@ class BufferedRepo(DataRepo):
 
 	def put_key(self, key):
 		self.key_buffer.append(key)
+
+	def find_keys(self):
+		return super().__select__(self._sql_select_keys)
+
+
+buffered_repo = BufferedRepo()
