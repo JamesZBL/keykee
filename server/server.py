@@ -28,3 +28,25 @@ def index():
 def keys():
     find = repo.find_keys()
     return jsonify({'rows': find})
+
+
+@app.route("/top/<int:top>")
+def top10(top):
+    total = repo.find_keys()
+    total_count = 0
+    tops = []
+    i = 0
+    for k in total:
+        if i < top:
+            tops.append(k)
+        count = k['count']
+        total_count += count
+        i += 1
+    tops_proportion = 0
+    for k in tops:
+        count = k['count']
+        proportion = round(count / total_count, ndigits=4)
+        k['proportion'] = proportion
+        tops_proportion += proportion
+    other_proportion = 1 - tops_proportion
+    return jsonify({'total': total_count, 'tops': tops, 'other': other_proportion})
