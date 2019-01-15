@@ -89,7 +89,7 @@ class TopChart extends React.Component {
             name: 'hit times',
             type: 'pie',
             radius: '55%',
-            center: ['50%', '50%'],
+            center: ['55%', '40%'],
             data: this.state.tops
           }
         ]
