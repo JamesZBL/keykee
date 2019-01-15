@@ -21,34 +21,40 @@ CORS(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+	return render_template("index.html")
 
 
 @app.route("/keys")
 def keys():
-    find = repo.find_keys()
-    return jsonify({'rows': find})
+	find = repo.find_keys()
+	return jsonify({'rows': find})
 
 
 @app.route("/top/<int:top>")
 def top10(top):
-    total = repo.find_keys()
-    total_count = 0
-    tops = []
-    tops_count = 0
-    i = 0
-    for k in total:
-        if i < top:
-            tops.append(k)
-            tops_count += k['count']
-        count = k['count']
-        total_count += count
-        i += 1
-    tops_proportion = 0
-    for k in tops:
-        count = k['count']
-        proportion = round(count / total_count, ndigits=4)
-        k['proportion'] = proportion
-        tops_proportion += proportion
-    other_count = total_count - tops_proportion
-    return jsonify({'total': total_count, 'tops': tops, 'other': other_count})
+	total = repo.find_keys()
+	total_count = 0
+	tops = []
+	tops_count = 0
+	i = 0
+	for k in total:
+		if i < top:
+			tops.append(k)
+			tops_count += k['count']
+		count = k['count']
+		total_count += count
+		i += 1
+	tops_proportion = 0
+	for k in tops:
+		count = k['count']
+		proportion = round(count / total_count, ndigits=4)
+		k['proportion'] = proportion
+		tops_proportion += proportion
+	other_count = total_count - tops_proportion
+	return jsonify({'total': total_count, 'tops': tops, 'other': other_count})
+
+
+@app.route("/recent")
+def recent():
+	recent_times = repo.find_recent()
+	return jsonify(recent_times)

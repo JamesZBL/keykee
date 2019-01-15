@@ -38,5 +38,14 @@ class BufferedRepo(DataRepo):
 			i = i + 1
 		return keys
 
+	def find_recent(self, count=10):
+		_sql = self._sql_select_recent.format(count)
+		recent_tuples = super().__select__(_sql)
+		recent = []
+		for c in recent_tuples:
+			tmp = {'count': c[0], "date": c[1]}
+			recent.append(tmp)
+		return recent
+
 
 buffered_repo = BufferedRepo()
