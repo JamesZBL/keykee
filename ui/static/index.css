@@ -11,13 +11,27 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+h1,h4 {
+    text-align: center;
+}
+
 h1 {
     color: #337eb9;
-    text-align: center;
     font-size: 40px;
 }
 
 table.keys {
     text-align: center;
     margin: 0 auto;
+    width: 180px;
 }
+
+table.keys td {
+    vertical-align: top;
+}
+
+table.keys td.keys {
+    color: #337eb9;
+}
+
+

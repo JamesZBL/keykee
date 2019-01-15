@@ -16,21 +16,30 @@ limitations under the License.
 <head>
     <meta charset="UTF-8">
     <title>Keykee</title>
-    <link rel= "stylesheet" type= "text/css" href= "/static/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
 </head>
 <body>
 <h1>Welcome to Keykee</h1>
+<h4>Here is the keyboard statistics.</h4>
 <table class="keys">
     <tr>
-        <th>key</th>
-        <th>count</th>
+        {% for column in columns %}
+        <td>
+            <table class="keys">
+                <tr>
+                    <th>key</th>
+                    <th>count</th>
+                </tr>
+                {% for key in column %}
+                <tr>
+                    <td>{{ key[0] }}</td>
+                    <td class="keys">{{ key[1] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        {% endfor %}
     </tr>
-    {% for key in keys %}
-    <tr>
-        <td>{{ key[0] }}</td>
-        <td>{{ key[1] }}</td>
-    </tr>
-    {% endfor %}
 </table>
 </body>
 </html>

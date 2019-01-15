@@ -15,11 +15,12 @@ from datetime import datetime
 from os import path
 from pathlib import Path
 
+from conf.config import Config
 from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-	_home_dir = str(Path.home()) + "/.keykee/"
+	_home_dir = str(Path.home()) + "/.keykee/" if not Config.dev else ""
 	_db_name = _home_dir + "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''
@@ -32,7 +33,8 @@ class DataRepo(DBRepo):
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 
 	def __init__(self) -> None:
-		self._init_home()
+		if not Config.dev:
+			self._init_home()
 		connection = self._connect()
 		super().__init__(self._columns, connection)
 		self._init()

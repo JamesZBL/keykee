@@ -9,15 +9,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from flask import Flask, render_template
-
-from data.buffered_repo import buffered_repo as repo
-
-webapp = Flask(__name__, static_folder='static', static_url_path='/static')
-app = webapp
+import sys
 
 
-@app.route("/")
-def index():
-	keys = repo.find_keys()
-	return render_template('index.html', keys=keys)
+class Config:
+	dev = '-dev' in sys.argv[1:]
+	server_port = 8000
