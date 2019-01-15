@@ -66,7 +66,6 @@ class TopChart extends React.Component {
           show: true,
           feature: {
             mark: {show: true},
-            dataView: {show: true, readOnly: false},
             magicType: {
               show: true,
               type: ['pie', 'funnel'],
@@ -79,8 +78,6 @@ class TopChart extends React.Component {
                 }
               }
             },
-            restore: {show: true},
-            saveAsImage: {show: true}
           }
         },
         calculable: true,
