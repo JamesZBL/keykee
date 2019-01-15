@@ -29,7 +29,14 @@ class BufferedRepo(DataRepo):
 		self.key_buffer.append(key)
 
 	def find_keys(self):
-		return super().__select__(self._sql_select_keys)
+		key_tuples = super().__select__(self._sql_select_keys)
+		keys = []
+		i = 1
+		for k in key_tuples:
+			tmp = {'order': i, 'name': k[0], 'count': k[1]}
+			keys.append(tmp)
+			i = i + 1
+		return keys
 
 
 buffered_repo = BufferedRepo()

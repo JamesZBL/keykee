@@ -17,3 +17,4 @@ then
 fi
 cp ./install dist/
 cp ./keykee.sh dist/
+cp ./ui/dist/* ./server/templates/

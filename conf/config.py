@@ -14,4 +14,4 @@ import sys
 
 class Config:
 	dev = '-dev' in sys.argv[1:]
-	server_port = 8000
+	server_port = 7999
