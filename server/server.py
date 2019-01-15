@@ -35,10 +35,12 @@ def top10(top):
     total = repo.find_keys()
     total_count = 0
     tops = []
+    tops_count = 0
     i = 0
     for k in total:
         if i < top:
             tops.append(k)
+            tops_count += k['count']
         count = k['count']
         total_count += count
         i += 1
@@ -48,5 +50,5 @@ def top10(top):
         proportion = round(count / total_count, ndigits=4)
         k['proportion'] = proportion
         tops_proportion += proportion
-    other_proportion = 1 - tops_proportion
-    return jsonify({'total': total_count, 'tops': tops, 'other': other_proportion})
+    other_count = total_count - tops_proportion
+    return jsonify({'total': total_count, 'tops': tops, 'other': other_count})

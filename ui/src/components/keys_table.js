@@ -21,15 +21,15 @@ class KeysTable extends React.Component {
     this.state = {
       rows: [],
       columns: [{
-        title: 'ranking',
+        title: '名次',
         dataIndex: 'order',
         align: 'center'
       }, {
-        title: 'key',
+        title: '按键',
         dataIndex: 'name',
         align: 'center'
       }, {
-        title: 'times',
+        title: '次数',
         dataIndex: 'count',
         align: 'center'
       }]
