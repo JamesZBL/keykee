@@ -21,7 +21,7 @@ class KeysTable extends React.Component {
     this.state = {
       rows: [],
       columns: [{
-        title: '名次',
+        title: '排名',
         dataIndex: 'order',
         align: 'center'
       }, {
@@ -46,7 +46,8 @@ class KeysTable extends React.Component {
 
   render() {
     return (
-      <Table dataSource={this.state.rows} columns={this.state.columns} pagination={false}/>
+      <Table bordered={true} dataSource={this.state.rows}
+             columns={this.state.columns} pagination={false}/>
     );
   }
 }
