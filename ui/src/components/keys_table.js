@@ -28,13 +28,12 @@ class KeysTable extends React.Component {
       }, {
         title: '按键',
         dataIndex: 'name',
-        align: 'center',
-        width: 110
+        align: 'center'
       }, {
         title: '次数',
         dataIndex: 'count',
         align: 'center',
-        width: 110
+        width: 105
       }]
     };
   }
@@ -49,7 +48,7 @@ class KeysTable extends React.Component {
 
   render() {
     return (
-      <Table scroll={{y: 865}} bordered={true} dataSource={this.state.rows}
+      <Table scroll={{y: 483}} bordered={true} dataSource={this.state.rows}
              columns={this.state.columns} pagination={false}/>
     );
   }
