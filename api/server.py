@@ -59,4 +59,5 @@ def till_now():
 	total_count = repo.find_total_count()
 	total = repo.find_keys()
 	most_frequency_key = total[0]
-	return jsonify({'total': total_count, 'most': most_frequency_key})
+	today_count = repo.find_today_count()
+	return jsonify({'total': total_count, 'most': most_frequency_key, 'today': today_count})

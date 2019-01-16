@@ -9,6 +9,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import datetime
+
 from data.data import DataRepo
 
 
@@ -50,6 +52,11 @@ class BufferedRepo(DataRepo):
 			tmp = {'count': c[0], "date": c[1]}
 			recent.append(tmp)
 		return recent
+
+	def find_today_count(self):
+		str_date = datetime.datetime.now().strftime('%Y-%m-%d')
+		count_tuple = super().__select__(self._sql_select_total_today.format(str_date))
+		return count_tuple[0][0]
 
 
 buffered_repo = BufferedRepo()

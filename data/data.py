@@ -31,7 +31,8 @@ class DataRepo(DBRepo):
 	                        FROM KEYKEE k GROUP BY upper(k.KEY_NAME) ORDER BY count DESC;'''
 	_sql_select_recent = '''select count(*) as `count`, strftime('%Y-%m-%d',k.DATE) as `date` 
 							from KEYKEE k group by strftime('%Y-%m-%d',k.DATE)  order by k.DATE desc limit {0}'''
-	_sql_select_total_count = '''select count(*) from KEYKEE k;'''
+	_sql_select_total_count = '''SELECT count(*) FROM KEYKEE k;'''
+	_sql_select_total_today = '''SELECT count(*) FROM KEYKEE k WHERE strftime('%Y-%m-%d', k.DATE) = '{0}';'''
 
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 
