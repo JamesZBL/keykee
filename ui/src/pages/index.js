@@ -19,12 +19,12 @@ export default function () {
         </Col>
         <Col span={12}>
           <div className={styles.cards}>
-            <Card title={'频率最高的10个键'}>
+            <Card title={'按的最多的10个键'}>
               <TopChart/>
             </Card>
           </div>
           <div className={styles.cards}>
-            <Card title={'每日按键统计'}>
+            <Card title={'按键频率历史趋势'}>
               <RecentChart/>
             </Card>
           </div>
