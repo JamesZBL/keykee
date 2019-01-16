@@ -11,10 +11,12 @@
 # limitations under the License.
 
 #!/bin/sh
+cp ./install dist/
+cp ./keykee.sh dist/
+cd ui
+npm run build
+cd ..
 if [ "-s" != "$1" ];
 then
     pyinstaller -w -F --add-data "ui/dist:server/templates" App.py
 fi
-cp ./install dist/
-cp ./keykee.sh dist/
-cp ./ui/dist/* ./server/templates/
