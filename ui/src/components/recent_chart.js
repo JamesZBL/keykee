@@ -46,7 +46,7 @@ class RecentChart extends React.Component {
     recent_chart.setOption({
       tooltip: {
         trigger: 'axis',
-        formatter: "<b>{b}</b><br/>按了{c}次"
+        formatter: "<b>{b}</b><br/>按了 {c} 次"
       },
       calculable: true,
       xAxis: [

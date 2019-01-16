@@ -57,7 +57,7 @@ class TopChart extends React.Component {
     top_chart.setOption({
         tooltip: {
           trigger: 'item',
-          formatter: "<b>{b}</b><br/>按了{c}次 ({d}%)"
+          formatter: "<b>{b}</b><br/>按了 {c} 次 ({d}%)"
         },
         legend: {
           orient: 'vertical',

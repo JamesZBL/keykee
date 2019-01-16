@@ -49,21 +49,19 @@ class Monitor extends React.Component {
     return (
       <div>
         <Row gutter={0}>
-          <Col span={8} className={style['col-div']}>
+          <Col span={8} className={style["col-div"]}>
             <span className={style.label}>一共按了</span>
             <span className={style["label-count"]}>{this.state.total}</span>
             <span className={style["label-line"]}>次</span>
           </Col>
-          <Col span={8} className={style['col-div']}>
+          <Col span={8} className={style["col-div"]}>
             <span className={style.label}>今天按了</span>
             <span className={style["label-count"]}>{this.state.today}</span>
             <span className={style["label-line"]}>次</span>
           </Col>
           <Col span={8}>
-            <span className={style.label}>按的最多的是</span>
-            <span className={style["label-count"]}>{this.state.most_key}</span>
-            <span className={style["label-line"]}>键</span>
-            {/*<br/>按了 {this.state.most_count} 次*/}
+            <span className={style.label}>按的最多的键是</span>
+            <span className={style["label-key"]}>{this.state.most_key}</span>
           </Col>
         </Row>
       </div>

@@ -66,4 +66,8 @@ def till_now():
 @app.route('/whole/day')
 def whole_day():
 	whole_day_count = repo.find_whole_day()
-	return jsonify(whole_day_count)
+	for i in whole_day_count:
+		hour_from = i['hour']
+		hour_to = hour_from + 1
+		i['hour'] = '{0}-{1} 时'.format(hour_from, hour_to)
+	return jsonify({'count': whole_day_count})
