@@ -29,12 +29,12 @@ class KeysTable extends React.Component {
         title: '按键',
         dataIndex: 'name',
         align: 'center',
-        width: 150
+        width: 110
       }, {
         title: '次数',
         dataIndex: 'count',
         align: 'center',
-        width: 150
+        width: 110
       }]
     };
   }

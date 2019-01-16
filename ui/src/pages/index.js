@@ -10,7 +10,7 @@ export default function () {
   return (
     <div className={styles.normal}>
       <Row gutter={0}>
-        <Col span={12}>
+        <Col offset={2} span={8}>
           <div className={styles.cards}>
             <Card title={'按键排行榜'}>
               <KeysTable/>
