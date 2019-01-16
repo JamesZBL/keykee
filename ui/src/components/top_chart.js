@@ -14,7 +14,9 @@ limitations under the License.
 import React from "react";
 import ax from "../conf/request";
 import echarts from 'echarts';
-import style from './common.css'
+import style from './common.css';
+import macaron from '../themes/macaron'
+
 
 class TopChart extends React.Component {
   constructor(props) {
@@ -51,8 +53,8 @@ class TopChart extends React.Component {
   }
 
   initChart() {
-    const myChart = echarts.init(document.getElementById('top_chart'));
-    myChart.setOption({
+    const top_chart = echarts.init(document.getElementById('top_chart'), macaron);
+    top_chart.setOption({
         tooltip: {
           trigger: 'item',
           formatter: "<b>{b}</b><br/>按了{c}次 ({d}%)"
@@ -86,7 +88,7 @@ class TopChart extends React.Component {
             name: 'hit times',
             type: 'pie',
             radius: '55%',
-            center: ['55%', '40%'],
+            center: ['55%', '50%'],
             data: this.state.tops
           }
         ]

@@ -3,6 +3,7 @@ import {Card, Col, Row} from 'antd';
 import React from "react";
 import KeysTable from '../components/keys_table'
 import TopChart from "../components/top_chart";
+import RecentChart from '../components/recent_chart'
 
 
 export default function () {
@@ -18,8 +19,13 @@ export default function () {
         </Col>
         <Col span={12}>
           <div className={styles.cards}>
-            <Card title={'TOP 10'}>
+            <Card title={'频率最高的10个键'}>
               <TopChart/>
+            </Card>
+          </div>
+          <div className={styles.cards}>
+            <Card title={'每日按键统计'}>
+              <RecentChart/>
             </Card>
           </div>
         </Col>
