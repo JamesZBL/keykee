@@ -9,28 +9,38 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import sqlite3
 import os
-from os import path
+import sqlite3
 from datetime import datetime
+from os import path
 from pathlib import Path
 
+from conf.config import Config
 from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-	_home_dir = str(Path.home()) + "/.keykee/"
+	_home_dir = str(Path.home()) + "/.keykee/" if not Config.dev else ""
 	_db_name = _home_dir + "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''
 	_sql_select_all = '''SELECT * FROM `KEYKEE`;'''
 	_sql_select_last_date = '''SELECT `DATE` FROM `KEYKEE` ORDER BY `ID` DESC;'''
 	_sql_insert_key = '''INSERT INTO `KEYKEE` VALUES (NULL, '%s', 1, '%s');'''
+	_sql_select_keys = '''SELECT DISTINCT upper(k.KEY_NAME) AS key, count(*) AS count
+	                        FROM KEYKEE k GROUP BY upper(k.KEY_NAME) ORDER BY count DESC;'''
+	_sql_select_keys_whole_day = '''SELECT strftime('%H',k.DATE) h,count(*) AS count
+		                        FROM KEYKEE k GROUP BY h ORDER BY h;'''
+	_sql_select_recent = '''select count(*) as `count`, strftime('%Y-%m-%d',k.DATE) as `date` 
+							from KEYKEE k group by strftime('%Y-%m-%d',k.DATE)  order by k.DATE desc limit {0}'''
+	_sql_select_total_count = '''SELECT count(*) FROM KEYKEE k;'''
+	_sql_select_total_today = '''SELECT count(*) FROM KEYKEE k WHERE strftime('%Y-%m-%d', k.DATE) = '{0}';'''
 
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 
 	def __init__(self) -> None:
-		self._init_home()
+		if not Config.dev:
+			self._init_home()
 		connection = self._connect()
 		super().__init__(self._columns, connection)
 		self._init()

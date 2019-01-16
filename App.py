@@ -9,17 +9,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from key.handler import Handler
+import _thread
+
+from conf.config import Config
+from key.handler import KeyEventHandler
 from key.listener import KeyListener
+from api.server import webapp
 
 
-class App:
-	def run(self):
-		handler = Handler()
-		listener = KeyListener(handler)
-		listener.listen()
+def run_client():
+	handler = KeyEventHandler()
+	listener = KeyListener(handler)
+	listener.listen()
+
+
+def run_server():
+	webapp.run(host='0.0.0.0', port=Config.server_port, debug=Config.dev)
 
 
 if __name__ == '__main__':
-	app = App()
-	app.run()
+	_thread.start_new_thread(run_client, ())
+	run_server()
