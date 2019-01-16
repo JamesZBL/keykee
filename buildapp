@@ -13,7 +13,7 @@
 #!/bin/sh
 if [ "-s" != "$1" ];
 then
-    pyinstaller -F App.py
+    pyinstaller -w -F --add-data "ui/dist:server/templates" App.py
 fi
 cp ./install dist/
 cp ./keykee.sh dist/
