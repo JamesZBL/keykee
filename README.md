@@ -1,27 +1,33 @@
 # keykee
-这是一个记录键盘的使用情况的软件
+这是一个记录键盘的使用情况的软件，目前它长这个样子
+
+![](assets/keykee.png)
 
 ## 安装
+
+首先请确保你的电脑上已安装最新版的 node 和 npm，编译之前的构建需要用到它们
 
 1.克隆代码仓库到本地
 
 ```sh
-$ git clone https://gitee.com/zbl1996/keyee.git
+$ git clone https://gitee.com/zbl1996/keykee.git && cd keykee
 ```
 
-2.安装 pipreqs
-```sh
-$ pip install pipreqs
-```
 
-3.安装项目依赖
+2.安装依赖
 
 ```sh
 $ pip install -r requirements.txt
 ```
 
-4.编译安装
+3.构建项目
 ```sh
+$ ./buildapp
+```
+
+4.安装运行
+```sh
+$ cd dist
 $ sudo ./install
 ```
 
