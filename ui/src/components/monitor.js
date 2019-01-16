@@ -13,7 +13,7 @@ limitations under the License.
 */
 import React from "react";
 import ax from "../conf/request";
-import {Col, Divider, Row} from "antd";
+import {Col, Row} from "antd";
 import style from './common.css'
 
 class Monitor extends React.Component {
@@ -47,22 +47,16 @@ class Monitor extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col span={7}>
+        <Row gutter={0}>
+          <Col span={8} className={style['col-div']}>
             <span className={style["label-count"]}>{this.state.total}</span>
             <span className={style["label-line"]}>次</span>
             <span className={style.label}>总共按了</span>
           </Col>
-          <Col span={1}>
-            <Divider type={'vertical'} style={{height: 74}}/>
-          </Col>
-          <Col span={7}>
+          <Col span={8} className={style['col-div']}>
             <span className={style["label-count"]}>{this.state.today}</span>
             <span className={style["label-line"]}>次</span>
             <span className={style.label}>今天按了</span>
-          </Col>
-          <Col span={1}>
-            <Divider type={'vertical'} style={{height: 74}}/>
           </Col>
           <Col span={8}>
             按的最多的是 {this.state.most_key} 键
