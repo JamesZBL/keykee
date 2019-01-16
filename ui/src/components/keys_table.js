@@ -48,7 +48,7 @@ class KeysTable extends React.Component {
 
   render() {
     return (
-      <Table scroll={{y: 483}} bordered={true} dataSource={this.state.rows}
+      <Table scroll={{y: 480}} bordered={true} dataSource={this.state.rows}
              columns={this.state.columns} pagination={false}/>
     );
   }

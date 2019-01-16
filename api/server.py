@@ -61,3 +61,9 @@ def till_now():
 	most_frequency_key = total[0]
 	today_count = repo.find_today_count()
 	return jsonify({'total': total_count, 'most': most_frequency_key, 'today': today_count})
+
+
+@app.route('/whole/day')
+def whole_day():
+	whole_day_count = repo.find_whole_day()
+	return jsonify(whole_day_count)

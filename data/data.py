@@ -29,6 +29,8 @@ class DataRepo(DBRepo):
 	_sql_insert_key = '''INSERT INTO `KEYKEE` VALUES (NULL, '%s', 1, '%s');'''
 	_sql_select_keys = '''SELECT DISTINCT upper(k.KEY_NAME) AS key, count(*) AS count
 	                        FROM KEYKEE k GROUP BY upper(k.KEY_NAME) ORDER BY count DESC;'''
+	_sql_select_keys_whole_day = '''SELECT strftime('%H',k.DATE) h,count(*) AS count
+		                        FROM KEYKEE k GROUP BY h ORDER BY h;'''
 	_sql_select_recent = '''select count(*) as `count`, strftime('%Y-%m-%d',k.DATE) as `date` 
 							from KEYKEE k group by strftime('%Y-%m-%d',k.DATE)  order by k.DATE desc limit {0}'''
 	_sql_select_total_count = '''SELECT count(*) FROM KEYKEE k;'''

@@ -94,7 +94,7 @@ class RecentChart extends React.Component {
 
   render() {
     return (
-      <div id="recent_chart" style={{width: 500, height: 400}} className={style.chart}/>
+      <div id="recent_chart" style={{width: 1000, height: 400}} className={style.chart}/>
     );
   }
 }

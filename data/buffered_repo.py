@@ -58,5 +58,22 @@ class BufferedRepo(DataRepo):
 		count_tuple = super().__select__(self._sql_select_total_today.format(str_date))
 		return count_tuple[0][0]
 
+	def find_whole_day(self):
+		count_tuples = super().__select__(self._sql_select_keys_whole_day)
+		whole_day_dict = {}
+		for i in count_tuples:
+			hour_str = i[0]
+			count = i[1]
+			hour = int(hour_str)
+			whole_day_dict[hour] = count
+		whole_day = []
+		for i in range(0, 24):
+			try:
+				count = whole_day_dict[i]
+				whole_day.append({'hour': i, 'count': count})
+			except KeyError:
+				whole_day.append({'hour': i, 'count': 0})
+		return whole_day
+
 
 buffered_repo = BufferedRepo()

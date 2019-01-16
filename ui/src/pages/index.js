@@ -29,6 +29,10 @@ export default function () {
               <TopChart/>
             </Card>
           </div>
+        </Col>
+      </Row>
+      <Row gutter={0}>
+        <Col offset={2} span={20}>
           <div className={styles.cards}>
             <Card title={'按键频率历史趋势'}>
               <RecentChart/>
