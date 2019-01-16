@@ -36,25 +36,19 @@ def top10(top):
 	total_count = 0
 	tops = []
 	tops_count = 0
-	i = 0
-	for k in total:
-		if i < top:
-			tops.append(k)
-			tops_count += k['count']
-		count = k['count']
+	for k in range(0, len(total)):
+		key = total[k]
+		count = key['count']
+		if k < top:
+			tops.append(key)
+			tops_count += count
 		total_count += count
-		i += 1
-	tops_proportion = 0
-	for k in tops:
-		count = k['count']
-		proportion = round(count / total_count, ndigits=4)
-		k['proportion'] = proportion
-		tops_proportion += proportion
-	other_count = total_count - tops_proportion
+	other_count = total_count - tops_count
 	return jsonify({'total': total_count, 'tops': tops, 'other': other_count})
 
 
 @app.route("/recent")
 def recent():
 	recent_times = repo.find_recent()
+	recent_times.reverse()
 	return jsonify(recent_times)
