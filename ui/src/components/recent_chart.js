@@ -48,6 +48,7 @@ class RecentChart extends React.Component {
         trigger: 'axis',
         formatter: "<b>{b}</b><br/>按了{c}次"
       },
+      calculable: true,
       xAxis: [
         {
           type: 'category',
@@ -82,12 +83,12 @@ class RecentChart extends React.Component {
           }
         }
       ],
-      dataZoom : {
-        show : true,
-        realtime : true,
-        start : 0,
-        end : 100
-    }
+      dataZoom: {
+        show: true,
+        realtime: true,
+        start: 0,
+        end: 100
+      }
     });
   }
 
