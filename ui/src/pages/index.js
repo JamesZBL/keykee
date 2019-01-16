@@ -4,6 +4,7 @@ import React from "react";
 import KeysTable from '../components/keys_table'
 import TopChart from "../components/top_chart";
 import RecentChart from '../components/recent_chart'
+import Monitor from '../components/monitor'
 
 
 export default function () {
@@ -18,6 +19,11 @@ export default function () {
           </div>
         </Col>
         <Col span={12}>
+          <div className={styles.cards}>
+            <Card>
+              <Monitor/>
+            </Card>
+          </div>
           <div className={styles.cards}>
             <Card title={'按的最多的10个键'}>
               <TopChart/>

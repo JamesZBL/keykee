@@ -18,5 +18,5 @@ npm run build
 cd ..
 if [ "-s" != "$1" ];
 then
-    pyinstaller -w -F --add-data "ui/dist:server/templates" App.py
+    pyinstaller -w -F --add-data "ui/dist:api/templates" App.py
 fi

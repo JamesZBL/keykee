@@ -38,6 +38,10 @@ class BufferedRepo(DataRepo):
 			i = i + 1
 		return keys
 
+	def find_total_count(self):
+		total_tuples = super().__select__(self._sql_select_total_count)
+		return total_tuples[0][0]
+
 	def find_recent(self, count=10):
 		_sql = self._sql_select_recent.format(count)
 		recent_tuples = super().__select__(_sql)

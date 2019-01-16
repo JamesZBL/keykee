@@ -14,7 +14,7 @@ import _thread
 from conf.config import Config
 from key.handler import KeyEventHandler
 from key.listener import KeyListener
-from server.server import webapp
+from api.server import webapp
 
 
 def run_client():

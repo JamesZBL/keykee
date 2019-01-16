@@ -27,10 +27,11 @@ class DataRepo(DBRepo):
 	_sql_select_all = '''SELECT * FROM `KEYKEE`;'''
 	_sql_select_last_date = '''SELECT `DATE` FROM `KEYKEE` ORDER BY `ID` DESC;'''
 	_sql_insert_key = '''INSERT INTO `KEYKEE` VALUES (NULL, '%s', 1, '%s');'''
-	_sql_select_keys = '''SELECT k.KEY_NAME AS key, count(*) AS count
-	                        FROM KEYKEE k GROUP BY k.KEY_NAME ORDER BY count DESC;'''
+	_sql_select_keys = '''SELECT DISTINCT upper(k.KEY_NAME) AS key, count(*) AS count
+	                        FROM KEYKEE k GROUP BY upper(k.KEY_NAME) ORDER BY count DESC;'''
 	_sql_select_recent = '''select count(*) as `count`, strftime('%Y-%m-%d',k.DATE) as `date` 
 							from KEYKEE k group by strftime('%Y-%m-%d',k.DATE)  order by k.DATE desc limit {0}'''
+	_sql_select_total_count = '''select count(*) from KEYKEE k;'''
 
 	_columns = ['ID', 'KEY_NAME', 'TIMES', 'DATE']
 

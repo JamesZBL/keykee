@@ -52,3 +52,11 @@ def recent():
 	recent_times = repo.find_recent(count=10)
 	recent_times.reverse()
 	return jsonify({'times': recent_times})
+
+
+@app.route("/till/now")
+def till_now():
+	total_count = repo.find_total_count()
+	total = repo.find_keys()
+	most_frequency_key = total[0]
+	return jsonify({'total': total_count, 'most': most_frequency_key})
