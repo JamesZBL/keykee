@@ -14,5 +14,5 @@
 .DS_Store
 
 # umi
-.umi
+#.umi
 .umi-production
