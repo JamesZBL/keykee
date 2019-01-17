@@ -33,8 +33,13 @@ class Monitor extends React.Component {
       .then(r => {
         r = r.data;
         let total = r.total;
-        let most_key = r.most.name;
-        let most_count = r.most.count;
+        let most = r.most;
+        let most_key = 'N/A';
+        let most_count = 0;
+        if (null != most) {
+          most_count = most.count;
+          most_key = most.name;
+        }
         let today = r.today;
         this.setState({
           total: total,
