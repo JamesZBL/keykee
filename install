@@ -11,8 +11,16 @@
 # limitations under the License.
 
 #!/bin/sh
+pid_file=~/.keykee/.pid
 boot_script=/etc/profile.d/keykee.sh
 work_path=$(dirname $(readlink -f $0))
 ln -s -f $work_path/keykee.sh $boot_script
 ln -s -f $work_path/App /usr/bin/keykee
+if [ -f $pid_file ]; then
+    pid="$(cat $pid_file)"
+    if ps -p $pid > /dev/null; then
+        echo "Keykee@$pid is running, it will exit. "
+        kill $pid
+    fi
+fi
 $boot_script &

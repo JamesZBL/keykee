@@ -13,14 +13,13 @@ import os
 import sqlite3
 from datetime import datetime
 from os import path
-from pathlib import Path
 
 from conf.config import Config
 from data.repo import DBRepo
 
 
 class DataRepo(DBRepo):
-	_home_dir = str(Path.home()) + "/.keykee/" if not Config.dev else ""
+	_home_dir = Config.home_dir
 	_db_name = _home_dir + "keykee.db"
 	_sql_create = '''CREATE TABLE IF NOT EXISTS 
 					`KEYKEE`(`ID` INTEGER PRIMARY KEY AUTOINCREMENT , `KEY_NAME` VARCHAR ,`TIMES` INT, `DATE` DATETIME);'''

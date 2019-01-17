@@ -10,8 +10,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import sys
+from pathlib import Path
 
 
 class Config:
 	dev = '-dev' in sys.argv[1:]
-	server_port = 7999
+	server_port = 7999 if not dev else 7998
+	home_dir = str(Path.home()) + "/.keykee/" if not dev else ""

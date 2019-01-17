@@ -13,10 +13,11 @@
 #!/bin/sh
 cp ./install dist/
 cp ./keykee.sh dist/
-cd ui
-npm run build
-cd ..
-if [ "-s" != "$1" ];
-then
+if [ "-p" != "$1" ]; then
+    cd ui
+    npm run build
+    cd ..
+fi
+if [ "-s" != "$1" ]; then
     pyinstaller -w -F --add-data "ui/dist:api/templates" App.py
 fi

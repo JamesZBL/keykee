@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import _thread
+import os
 
 from conf.config import Config
 from key.handler import KeyEventHandler
@@ -27,6 +28,14 @@ def run_server():
 	webapp.run(host='0.0.0.0', port=Config.server_port, debug=Config.dev)
 
 
+def record_pid():
+	this_pid = os.getpid()
+	home_dir = Config.home_dir
+	with open(home_dir + '.pid', 'w') as pid_file:
+		pid_file.write(str(this_pid))
+
+
 if __name__ == '__main__':
 	_thread.start_new_thread(run_client, ())
+	record_pid()
 	run_server()
