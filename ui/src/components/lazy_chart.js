@@ -12,18 +12,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import React from 'react';
-import TrackVisibility from 'react-on-screen';
 import WholeDayChart from "./whole_day";
 import RecentChart from "./recent_chart";
 import TopChart from "./top_chart";
+import {Empty} from "antd";
+import TrackVisibility from "react-on-screen";
 
 
-const loadingLg = <div style={{width: 1000, height: 400}}>Loading...</div>;
-const loadingSm = <div style={{width: 500, height: 400}}>Loading...</div>;
+const emptyLg = <Empty style={{width: 900, height: 400}}/>;
+const emptySm = <Empty style={{width: 500, height: 400}}/>;
 export const WholeDay = () => {
   return (
     <TrackVisibility offset={100} once={true}>
-      {({isVisible}) => isVisible ? <WholeDayChart/> : loadingLg}
+      {({isVisible}) => isVisible ? <WholeDayChart/> : emptyLg}
     </TrackVisibility>
   );
 };
@@ -31,7 +32,7 @@ export const WholeDay = () => {
 export const Recent = () => {
   return (
     <TrackVisibility offset={100} once={true}>
-      {({isVisible}) => isVisible ? <RecentChart/> : loadingLg}
+      {({isVisible}) => isVisible ? <RecentChart/> : emptyLg}
     </TrackVisibility>
   );
 };
@@ -39,7 +40,7 @@ export const Recent = () => {
 export const Top = () => {
   return (
     <TrackVisibility offset={100} once={true}>
-      {({isVisible}) => isVisible ? <TopChart/> : loadingSm}
+      {({isVisible}) => isVisible ? <TopChart/> : emptySm}
     </TrackVisibility>
   );
 };
