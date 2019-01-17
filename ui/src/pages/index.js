@@ -2,10 +2,8 @@ import styles from './index.css';
 import {Card, Col, Row} from 'antd';
 import React from "react";
 import KeysTable from '../components/keys_table'
-import TopChart from "../components/top_chart";
-import RecentChart from '../components/recent_chart'
 import Monitor from '../components/monitor'
-import WholeDayChart from "../components/whole_day";
+import {WholeDay, Recent, Top} from "../components/lazy_chart";
 
 
 export default function () {
@@ -27,7 +25,7 @@ export default function () {
           </div>
           <div className={styles.cards}>
             <Card title={'按的最多的 10 个键'}>
-              <TopChart/>
+              <Top/>
             </Card>
           </div>
         </Col>
@@ -36,7 +34,7 @@ export default function () {
         <Col offset={2} span={20}>
           <div className={styles.cards}>
             <Card title={'按键频率历史趋势'}>
-              <RecentChart/>
+              <Recent/>
             </Card>
           </div>
         </Col>
@@ -45,7 +43,7 @@ export default function () {
         <Col offset={2} span={20}>
           <div className={styles.cards}>
             <Card title={'按键历史上的 24 小时'}>
-              <WholeDayChart/>
+              <WholeDay/>
             </Card>
           </div>
         </Col>
