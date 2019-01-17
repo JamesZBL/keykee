@@ -1,4 +1,4 @@
-PyYAML
-Flask==1.0.2
 pynput==1.4
+Flask==1.0.2
 Flask_Cors==3.0.7
+PyYAML==3.13
