@@ -10,18 +10,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import _thread
+import logging.config
 import os
+import yaml
 
+from api.server import webapp
 from conf.config import Config
 from key.handler import KeyEventHandler
 from key.listener import KeyListener
-from api.server import webapp
+
+
+def load_logging():
+	config = yaml.load(open('logging.conf'))
+	log_file = '%sapp.log' % Config.home_dir
+	config['handlers']['file']['filename'] = log_file
+	logging.config.dictConfig(config)
 
 
 def run_client():
 	handler = KeyEventHandler()
 	listener = KeyListener(handler)
 	listener.listen()
+
+
+def start_client():
+	_thread.start_new_thread(run_client, ())
 
 
 def run_server():
@@ -36,6 +49,7 @@ def record_pid():
 
 
 if __name__ == '__main__':
-	_thread.start_new_thread(run_client, ())
+	load_logging()
+	start_client()
 	record_pid()
 	run_server()
