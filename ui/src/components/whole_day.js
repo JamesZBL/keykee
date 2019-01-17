@@ -28,6 +28,7 @@ class WholeDayChart extends React.Component {
   }
 
   componentDidMount() {
+    const _this = this;
     ax.get('/whole/day')
       .then(r => {
         r = r.data;
@@ -36,10 +37,10 @@ class WholeDayChart extends React.Component {
           let hc = hour_counts[i];
           let hour = hc.hour;
           let count = hc.count;
-          this.state.hours.push(hour);
-          this.state.counts.push(count);
+          _this.state.hours.push(hour);
+          _this.state.counts.push(count);
         }
-        this.initChart();
+        _this.initChart();
       });
   }
 
