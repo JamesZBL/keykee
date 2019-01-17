@@ -21,7 +21,7 @@ from key.listener import KeyListener
 
 
 def load_logging():
-	config = yaml.load(open('logging.conf'))
+	config = yaml.load(open('resources/logging.conf'))
 	log_file = '%sapp.log' % Config.home_dir
 	config['handlers']['file']['filename'] = log_file
 	logging.config.dictConfig(config)

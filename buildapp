@@ -19,5 +19,5 @@ if [ "-p" != "$1" ]; then
     cd ..
 fi
 if [ "-s" != "$1" ]; then
-    pyinstaller -w -F --add-data "ui/dist:api/templates" --add-data "logging.conf:logging.conf" App.py
+    pyinstaller -w -F --add-data "ui/dist:api/templates" --add-data "resources/resources" App.py
 fi
