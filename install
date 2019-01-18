@@ -19,7 +19,7 @@ ln -s -f $work_path/App /usr/bin/keykee
 if [ -f $pid_file ]; then
     pid="$(cat $pid_file)"
     if ps -p $pid > /dev/null; then
-        echo "Keykee@$pid is running, it will exit. "
+        echo "An Keykee instance (PID:$pid) of old version is running, it will exit. "
         kill $pid
     fi
 fi
