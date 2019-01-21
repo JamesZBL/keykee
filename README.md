@@ -38,7 +38,9 @@ $ sudo ./install
 ## 贡献
 
 如果你有更好的想法，欢迎贡献 pull request，GUI 亟待美化
+
 如果你在使用中遇到了问题，请提交 issue 并附上相关 log
+
 目前安装脚本只有 shell 版，欢迎贡献其它平台安装脚本
 
 
