@@ -10,7 +10,7 @@
 * React
 * Ant Design
 
-## 安装
+## 构建与安装
 
 首先请确保你的电脑上已安装最新版的 node 和 npm，对客户端代码的构建需要用到它们
 
@@ -20,15 +20,16 @@
 $ git clone https://gitee.com/zbl1996/keykee.git && cd keykee
 ```
 
-
 2.安装依赖
 
 ```sh
 $ pip install -r requirements.txt
+$ cd ui && npm install
 ```
 
 3.构建项目
 ```sh
+$ cd ..
 $ ./buildapp
 ```
 
