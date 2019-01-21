@@ -3,6 +3,13 @@
 
 ![](assets/keykee.png)
 
+## 技术
+
+* Flask
+* SQLite
+* React
+* Ant Design
+
 ## 安装
 
 首先请确保你的电脑上已安装最新版的 node 和 npm，对客户端代码的构建需要用到它们
