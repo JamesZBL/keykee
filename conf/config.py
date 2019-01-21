@@ -9,11 +9,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import os
 import sys
 from pathlib import Path
+
+
+def resource_path(relative_path=""):
+	return os.path.join(os.path.abspath("."), relative_path)
 
 
 class Config:
 	dev = '-dev' in sys.argv[1:]
 	server_port = 7999 if not dev else 7998
 	home_dir = str(Path.home()) + "/.keykee/" if not dev else ""
+	res_path = resource_path("resources")
