@@ -13,9 +13,10 @@ limitations under the License.
 */
 import axios from "axios";
 
+let server_port = process.env.SERVER_PORT;
 const ax = axios.create({
-  baseURL: 'http://127.0.0.1:7999/',
-  timeout: 1000,
+  baseURL: 'http://127.0.0.1:' + server_port + "/",
+  timeout: 10000,
   headers: {'X-Custom-Header': 'foobar'}
 });
 

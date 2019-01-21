@@ -10,11 +10,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import _thread
+import logging.config
+import os
+import yaml
 
+from api.server import webapp
 from conf.config import Config
 from key.handler import KeyEventHandler
 from key.listener import KeyListener
-from api.server import webapp
+
+
+def load_logging():
+	config_file = Config.res_path + '/logging.conf'
+	config = yaml.load(open(config_file))
+	log_file = '%sapp.log' % Config.home_dir
+	config['handlers']['file']['filename'] = log_file
+	logging.config.dictConfig(config)
 
 
 def run_client():
@@ -23,10 +34,23 @@ def run_client():
 	listener.listen()
 
 
+def start_client():
+	_thread.start_new_thread(run_client, ())
+
+
 def run_server():
 	webapp.run(host='0.0.0.0', port=Config.server_port, debug=Config.dev)
 
 
+def record_pid():
+	this_pid = os.getpid()
+	home_dir = Config.home_dir
+	with open(home_dir + '.pid', 'w') as pid_file:
+		pid_file.write(str(this_pid))
+
+
 if __name__ == '__main__':
-	_thread.start_new_thread(run_client, ())
+	load_logging()
+	start_client()
+	record_pid()
 	run_server()
