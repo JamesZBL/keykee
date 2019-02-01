@@ -12,6 +12,7 @@
 
 #!/bin/sh
 pid_file=~/.keykee/.pid
+resources_path=~/.keykee/resources
 boot_script=/etc/profile.d/keykee.sh
 work_path=$(dirname $(readlink -f $0))
 ln -s -f $work_path/keykee.sh $boot_script
@@ -23,4 +24,8 @@ if [ -f $pid_file ]; then
         kill $pid
     fi
 fi
+if [ ! -d $resources_path ]; then
+    mkdir -p $resources_path
+fi
+cp -r resources $resources_path
 $boot_script &
