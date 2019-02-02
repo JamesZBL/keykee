@@ -29,6 +29,7 @@ $ cd ui && npm install
 
 3.构建项目
 ```sh
+$ pip install pyinstaller
 $ cd ..
 $ ./buildapp
 ```
