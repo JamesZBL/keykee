@@ -1,3 +1,8 @@
+#!/bin/sh
+
+#
+# Copyright JamesZBL 2019
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -10,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/sh
-pid_file=~/.keykee/.pid
+home_path=~/.keykee
+pid_file=${home_path}/.pid
 boot_script=/etc/profile.d/keykee.sh
 work_path=$(dirname $(readlink -f $0))
 ln -s -f $work_path/keykee.sh $boot_script
@@ -23,4 +28,8 @@ if [ -f $pid_file ]; then
         kill $pid
     fi
 fi
+if [ ! -d $home_path ]; then
+    mkdir -p $home_path
+fi
+cp -r resources $home_path
 $boot_script &
