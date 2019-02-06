@@ -49,7 +49,7 @@ def top10(top):
 
 @app.route("/recent")
 def recent():
-	recent_times = repo.find_recent(count=10)
+	recent_times = repo.find_recent(count=999)
 	recent_times.reverse()
 	return jsonify({'times': recent_times})
 
